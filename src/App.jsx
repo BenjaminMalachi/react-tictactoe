@@ -2,31 +2,67 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import GameLogic from "/GameLogic.js";
+import {
+  handleCellClick,
+  togglePlayer,
+  checkWinner,
+  resetGame,
+} from "./GameLogic";
 
-import { Flex, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Button, Flex } from "@chakra-ui/react";
 import GameBoard from "./components/GameBoard";
 
 function App() {
   //State
-  const [boardState, setBoardState] = useState([1, 2, 0, 0, 2, 1, 0, 0, 1]);
+  const [boardState, setBoardState] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [message, setMessage] = useState("Welcome to Tic Tac Toe");
   const [turnCount, setTurnCount] = useState(0);
+  const [currentPlayer, setCurrentPlayer] = useState("1");
+  const [winner, setWinner] = useState(null);
 
   //Event Handlers
 
-  //When PLayer Clicks a grid
-  // 1. Check if Game is active && 2. Check if Cell is already populated
-  // 3. Set cell to currentplayer
-  // 4. Run checkWinner function (end game if there is a winner)
-  // 5. Run togglePLayer function (to pass turn to next player)
+  const handleClick = (index, value) => {
+    console.log("Clicked");
+  };
 
-  //checkWinner function
-  // populate list of possible winning combinations
-  // Check if any of the winning combinations matches the current state
-  // If all the squares are filled and do NOT match any of the combos, game ends in a draw
+  const resetGameHandler = () => {
+    console.log("Reset");
+  };
 
-  return <GameBoard boardState={boardState} setBoardState={setBoardState} />;
+  //When Player Clicks a grid
+  // const handleClick = (index, value) => {
+  //   if (!boardState[index] && !winner) {
+  //     const updatedBoard = handleCellClick(
+  //       [...boardState],
+  //       index,
+  //       currentPlayer
+  //     );
+  //     setBoardState(updatedBoard);
+  //     const newWinner = checkWinner(updatedBoard, currentPlayer);
+  //     if (newWinner) {
+  //       setWinner(newWinner);
+  //     } else {
+  //       togglePlayer(currentPlayer, setCurrentPlayer);
+  //     }
+  //   }
+  // };
+
+  // const resetGameHandler = () => {
+  //   resetGame(setCurrentPlayer, setBoardState, setWinner, setMessage);
+  //   setMessage("Welcome to Tic Tac Toe");
+  // };
+
+  return (
+    <>
+      <Flex align="center" justify="center">
+        {/* <Box>TIC-TAC-TOE</Box> */}
+        <GameBoard boardState={boardState} handleClick={handleClick} />;
+        {/* <Box>{message}</Box> */}
+        <Button onClick={resetGameHandler}>Reset Game</Button>
+      </Flex>
+    </>
+  );
 }
 
 export default App;

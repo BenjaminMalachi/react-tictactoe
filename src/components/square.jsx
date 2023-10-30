@@ -15,8 +15,19 @@ export default function Square(props) {
     }
   };
 
+  //local handleClick function to pass index and cell to parent
+  const handleClick = () => {
+    props.handleClick(props.index, props.cell);
+  };
+
   return (
-    <GridItem borderRadius="20px" w="100%" h="100%" bg="white">
+    <GridItem
+      onClick={handleClick}
+      borderRadius="20px"
+      w="100%"
+      h="100%"
+      bg="white"
+    >
       <Flex align="center" justify="center" h="100%">
         {renderImage()}
       </Flex>

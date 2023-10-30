@@ -1,22 +1,26 @@
-function squareClick {
+export function handleCellClick(boardState, index, currentPlayer, setBoardState, setWinner, setGameActive){
 
-    if (gameBoard[index] === '' && gameActive) {
-        gameBoard[index] = currentPlayer;
-        cell.textContent = currentPlayer; // Use textContent to display 1 or 2
-        cell.dataset.cell = currentPlayer;
-        togglePlayer();
-        checkWinner();
-    }
-
-}
-
-function togglePlayer{
-
-    currentPlayer = currentPlayer === '1' ? '2' : '1';
+    if (boardState[index] === '0' && setGameActive) {
+        const updatedBoard = [...boardState];
+        updatedBoard[index] = currentPlayer;
+        setBoardState(updatedBoard);
+        const newWinner = checkWinner(updatedBoard, currentPlayer);
+        if (newWinner) {
+            setWinner(newWinner);
+        } else {
+            togglePlayer(currentPlayer, setCurrentPlayer);
+        }
+    }  
 
 }
 
-function checkWinner{
+export function togglePlayer(currentPlayer, setCurrentPlayer, message) {
+    const newPlayer = currentPlayer === '1' ? '2' : '1';
+    setCurrentPlayer(newPlayer);
+    setMessage(`Player ${newPlayer} is your turn!`);
+}
+
+export function checkWinner(boardState, currentPlayer, setMessage){
 
     const winningCombos = [
         [0, 1, 2],
@@ -31,31 +35,24 @@ function checkWinner{
 
     for (const combo of winningCombos) {
         const [a, b, c] = combo;
-        if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
-            message.innerText = `Player ${currentPlayer} wins!`;
-            gameActive = false;
+        if (boardState[a] && boardState[a] === boardState[b] && boardState[a] === boardState[c]) {
+            setMessage(`Player ${currentPlayer} wins!`);
+            return `Player ${currentPlayer} wins!`;
         }
 
     }
 
-    if (!gameBoard.includes('0') && gameActive) {
-        message.innerText = "It's a draw!";
-        gameActive = false;
+    if (!boardState.includes('0')) {
+        setMessage("It's a draw!");
     }
 
-}
-
-function resetGame() {
-
-    currentPlayer = '1';
-    gameBoard = ['0', '0', '0', '0', '0', '0', '0', '0', '0'];
-    gameActive = true;
-    cells.forEach(cell => {
-        cell.textContent = '0'; // Clear the cell content
-        cell.dataset.cell = '0';
-    });
-    message.innerText = `Player ${currentPlayer}, it's your turn`;
+    return null;
 
 }
 
-export default GameLogic
+export function resetGame(setCurrentPlayer, setBoardState, setWinner, setMessage) {
+    setCurrentPlayer('1');
+    setBoardState(['0', '0', '0', '0', '0', '0', '0', '0', '0']);
+    setWinner(null);
+    setMessage(`Player 1, it's your turn`);
+}

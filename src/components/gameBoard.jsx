@@ -2,14 +2,9 @@ import { useState } from "react";
 import { Flex, Grid, GridItem } from "@chakra-ui/react";
 import Square from "./square";
 
-export default function GameBoard({ boardState }) {
+export default function GameBoard({ boardState, handleClick }) {
   return (
-    <Flex
-      width="100vw"
-      height="100vh"
-      align="center" // for vertical alignment
-      justify="center" // fo
-    >
+    <Flex width="100vw" height="100vh" align="center" justify="center">
       <Grid
         p={10}
         w={"680px"}
@@ -19,7 +14,14 @@ export default function GameBoard({ boardState }) {
         gap={20}
       >
         {boardState.map((cell, index) => {
-          return <Square key={index} cell={cell} index={index} />;
+          return (
+            <Square
+              handleClick={handleClick}
+              key={index}
+              cell={cell}
+              index={index}
+            />
+          );
         })}
       </Grid>
     </Flex>
