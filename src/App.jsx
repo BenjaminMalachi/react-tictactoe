@@ -17,7 +17,7 @@ function App() {
   const [boardState, setBoardState] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [message, setMessage] = useState("Welcome to Tic Tac Toe");
   const [turnCount, setTurnCount] = useState(0);
-  const [currentPlayer, setCurrentPlayer] = useState("1");
+  const [currentPlayer, setCurrentPlayer] = useState(1);
   const [winner, setWinner] = useState(null);
 
   //Event Handlers
