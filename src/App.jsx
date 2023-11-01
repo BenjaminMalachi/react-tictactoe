@@ -15,7 +15,7 @@ import GameBoard from "./components/GameBoard";
 function App() {
   //State
   const [boardState, setBoardState] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
-  const [message, setMessage] = useState("Welcome to Tic Tac Toe");
+  const [message, setMessage] = useState("TIC TAC TOE");
   const [turnCount, setTurnCount] = useState(0);
   const [currentPlayer, setCurrentPlayer] = useState(1);
   const [winner, setWinner] = useState(null);
@@ -58,7 +58,12 @@ function App() {
   return (
     <>
       <Flex align="center" justify="center" h="100vh" w="100vw">
-        <GameBoard boardState={boardState} handleClick={handleClick} />;
+        <GameBoard
+          message={message}
+          boardState={boardState}
+          handleClick={handleClick}
+        />
+        ;
       </Flex>
     </>
   );

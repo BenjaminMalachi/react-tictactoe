@@ -31,7 +31,7 @@ export default function GameBoard(props) {
           borderRadius={20}
           bg="white"
         >
-          TIC-TAC-TOE
+          {props.message}
         </GridItem>
         {props.boardState.map((cell, index) => {
           return (
