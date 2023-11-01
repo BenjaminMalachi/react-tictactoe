@@ -15,14 +15,10 @@ export default function Square(props) {
     }
   };
 
-  //local handleClick function to pass index and cell to parent
-  const handleClick = () => {
-    props.handleClick(props.index, props.cell);
-  };
-
   return (
     <GridItem
-      onClick={handleClick}
+      as="button"
+      onClick={props.handleClick}
       borderRadius="20px"
       w="100%"
       h="100%"

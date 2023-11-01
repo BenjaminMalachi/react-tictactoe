@@ -9,7 +9,7 @@ import {
   resetGame,
 } from "./GameLogic";
 
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid, GridItem } from "@chakra-ui/react";
 import GameBoard from "./components/GameBoard";
 
 function App() {
@@ -57,11 +57,8 @@ function App() {
 
   return (
     <>
-      <Flex align="center" justify="center">
-        {/* <Box>TIC-TAC-TOE</Box> */}
+      <Flex align="center" justify="center" h="100vh" w="100vw">
         <GameBoard boardState={boardState} handleClick={handleClick} />;
-        {/* <Box>{message}</Box> */}
-        <Button onClick={resetGameHandler}>Reset Game</Button>
       </Flex>
     </>
   );
