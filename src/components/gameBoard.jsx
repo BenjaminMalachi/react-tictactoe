@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Flex, Grid, GridItem } from "@chakra-ui/react";
 import Square from "./square";
 
-export default function GameBoard({ boardState, handleClick }) {
+export default function GameBoard(props) {
   //To handle click
   // (cell, index) => {
   //   console.log(index);
@@ -33,13 +33,13 @@ export default function GameBoard({ boardState, handleClick }) {
         >
           TIC-TAC-TOE
         </GridItem>
-        {boardState.map((cell, index) => {
+        {props.boardState.map((cell, index) => {
           return (
             <Square
-              handleClick={(index, value) => {
-                console.log("Clicked");
+              handleClick={() => {
+                props.handleClick(cell, index);
               }}
-              key={index}
+              key={index.key}
               cell={cell}
               index={index}
             />

@@ -1,6 +1,6 @@
 export function handleCellClick(boardState, index, currentPlayer, setBoardState, setWinner, setGameActive){
 
-    if (boardState[index] === '0' && setGameActive) {
+    if (boardState[index] === 0 && setGameActive) {
         const updatedBoard = [...boardState];
         updatedBoard[index] = currentPlayer;
         setBoardState(updatedBoard);
@@ -15,7 +15,7 @@ export function handleCellClick(boardState, index, currentPlayer, setBoardState,
 }
 
 export function togglePlayer(currentPlayer, setCurrentPlayer, message) {
-    const newPlayer = currentPlayer === '1' ? '2' : '1';
+    const newPlayer = currentPlayer === 1 ? 2 : 1;
     setCurrentPlayer(newPlayer);
     setMessage(`Player ${newPlayer} is your turn!`);
 }
@@ -42,7 +42,7 @@ export function checkWinner(boardState, currentPlayer, setMessage){
 
     }
 
-    if (!boardState.includes('0')) {
+    if (!boardState.includes(0)) {
         setMessage("It's a draw!");
     }
 
@@ -51,8 +51,8 @@ export function checkWinner(boardState, currentPlayer, setMessage){
 }
 
 export function resetGame(setCurrentPlayer, setBoardState, setWinner, setMessage) {
-    setCurrentPlayer('1');
-    setBoardState(['0', '0', '0', '0', '0', '0', '0', '0', '0']);
+    setCurrentPlayer(1);
+    setBoardState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
     setWinner(null);
     setMessage(`Player 1, it's your turn`);
 }
