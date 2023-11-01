@@ -2,12 +2,14 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import {
-  handleCellClick,
-  togglePlayer,
-  checkWinner,
-  resetGame,
-} from "./GameLogic.js";
+// import {
+//   handleCellClick,
+//   togglePlayer,
+//   checkWinner,
+//   resetGame,
+// } from "./GameLogic.js";
+
+import { handleCellClick } from "./GameLogicV2.jsx";
 
 import { Box, Button, Flex, Grid, GridItem } from "@chakra-ui/react";
 import GameBoard from "./components/GameBoard.jsx";
