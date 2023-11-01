@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Flex, Grid, GridItem } from "@chakra-ui/react";
-import Square from "./square";
+import Square from "./Square.jsx";
 
 export default function GameBoard(props) {
   //To handle click
