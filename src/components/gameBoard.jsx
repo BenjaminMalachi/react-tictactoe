@@ -7,8 +7,8 @@ export default function GameBoard({ boardState, handleClick }) {
     <Flex width="100vw" height="100vh" align="center" justify="center">
       <Grid
         p={10}
-        w={"680px"}
-        h={"680px"}
+        w={"400px"}
+        h={"400px"}
         templateColumns="repeat(3, 1fr)"
         templateRows="repeat(3, 1fr)"
         gap={20}

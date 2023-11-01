@@ -14,7 +14,7 @@ import GameBoard from "./components/GameBoard";
 
 function App() {
   //State
-  const [boardState, setBoardState] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const [boardState, setBoardState] = useState([1, 2, 1, 2, 1, 2, 1, 2, 1]);
   const [message, setMessage] = useState("Welcome to Tic Tac Toe");
   const [turnCount, setTurnCount] = useState(0);
   const [currentPlayer, setCurrentPlayer] = useState(1);
@@ -24,6 +24,8 @@ function App() {
 
   const handleClick = (index, value) => {
     console.log("Clicked");
+
+    //Check if square is empty
   };
 
   const resetGameHandler = () => {

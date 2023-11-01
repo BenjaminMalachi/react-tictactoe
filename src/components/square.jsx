@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Flex, Grid, GridItem } from "@chakra-ui/react";
+import { Flex, Grid, GridItem, Image } from "@chakra-ui/react";
 
 const crossImageURL = "src/assets/img/cross.svg";
 const circleImageURL = "src/assets/img/circle.svg";
@@ -7,9 +7,9 @@ const circleImageURL = "src/assets/img/circle.svg";
 export default function Square(props) {
   const renderImage = () => {
     if (props.cell === 1) {
-      return <img src={crossImageURL} alt="Cross" />;
+      return <Image boxSize={"50px"} src={crossImageURL} alt="Cross" />;
     } else if (props.cell === 2) {
-      return <img src={circleImageURL} alt="Circle" />;
+      return <Image boxSize={"50px"} src={circleImageURL} alt="Circle" />;
     } else {
       return <></>;
     }
