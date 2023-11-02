@@ -39,7 +39,7 @@ export default function GameBoard(props) {
               handleClick={() => {
                 props.handleClick(cell, index);
               }}
-              key={index.key}
+              key={index}
               cell={cell}
               index={index}
             />
@@ -47,6 +47,7 @@ export default function GameBoard(props) {
         })}
         <GridItem
           as="button"
+          onClick={props.resetGame}
           color={"black"}
           fontWeight={"bold"}
           fontSize={"30px"}

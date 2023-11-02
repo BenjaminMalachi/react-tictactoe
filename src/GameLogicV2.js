@@ -1,18 +1,31 @@
-export function handleCellClick(boardState, index, currentPlayer,setCurrentPlayer, setBoardState, setWinner,setMessage){
-
+export function handleCellClick(
+    boardState,
+    index,
+    currentPlayer,
+    setCurrentPlayer,
+    setBoardState,
+    setWinner,
+    setMessage  
+  ) {
     if (boardState[index] === 0) {
-        const updatedBoard = [...boardState];
-        updatedBoard[index] = currentPlayer;
-        setBoardState(updatedBoard);
-        const newWinner = checkWinner(updatedBoard, currentPlayer);
-        if (newWinner) {
-            setWinner(newWinner);
-        } else {
-            togglePlayer(currentPlayer, setCurrentPlayer, setMessage);
-        }
-    }  
-
-}
+      const updatedBoard = [...boardState];
+      updatedBoard[index] = currentPlayer;
+      setBoardState(updatedBoard);
+      const newWinner = checkWinner(updatedBoard, currentPlayer, setMessage);
+      if (newWinner) {
+        setWinner(newWinner);
+        setMessage(`${newWinner}`);
+      } else {
+        togglePlayer(currentPlayer, setCurrentPlayer, setMessage);
+      }
+      if (!boardState.includes(0)) {
+        setMessage("It's a draw!");
+        return null;
+      }
+    
+      return null;
+    }
+  }
 
 
 export function togglePlayer(currentPlayer, setCurrentPlayer, setMessage) {
@@ -21,7 +34,7 @@ export function togglePlayer(currentPlayer, setCurrentPlayer, setMessage) {
     setMessage(`Player ${newPlayer} is your turn!`);
 }
 
-export function checkWinner(boardState, currentPlayer, setMessage){
+export function checkWinner(boardState, currentPlayer, setMessage) {
 
     const winningCombos = [
         [0, 1, 2],

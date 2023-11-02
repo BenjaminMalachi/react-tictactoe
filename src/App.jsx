@@ -1,11 +1,8 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-
-import { handleCellClick } from "./GameLogicV2.js";
 import { Flex } from "@chakra-ui/react";
 import GameBoard from "./components/GameBoard.jsx";
+import { handleCellClick, resetGame } from "./GameLogicV2.js";
 
 function App() {
   //State
@@ -18,6 +15,9 @@ function App() {
   //Event Handlers
 
   const handleClick = (value, index) => {
+
+    if (winner) return;
+
     handleCellClick(
       boardState,
       index,
@@ -30,7 +30,7 @@ function App() {
   };
 
   const resetGameHandler = () => {
-    console.log("Reset");
+    resetGame(setCurrentPlayer, setBoardState, setWinner, setMessage);
   };
 
   return (
@@ -40,8 +40,8 @@ function App() {
           message={message}
           boardState={boardState}
           handleClick={handleClick}
-        />
-        ;
+          resetGame={resetGameHandler}
+        />;
       </Flex>
     </>
   );
